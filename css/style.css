@@ -13,13 +13,63 @@
 }
 
 body {
+    margin: 0;
+    padding: 0;
     background: var(--mostarda);
     font-family: var(--font-padrao);
 }
 
+/* Animação ICON */
+@keyframes animacaoDado {
+    0% {
+        transform: rotate(0);
+    }
+
+    25% {
+        transform: rotate(90deg);
+    }
+
+    50% {
+        transform: rotate(180deg);
+    }
+
+    75% {
+        transform: rotate(270deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.animacaoDado {
+    animation: animacaoDado 2s linear infinite;
+}
+
 header {
     color: #FEFEFE;
+    margin: auto;
     text-align: center;
+}
+
+header h1 {
+    display: inline;
+}
+
+header img {
+    margin-top: 10px;
+    width: 50px;
+    height: 50px;
+}
+
+/* Entrada de Dados */
+.conferirDados {
+    margin: 100px auto;
+    width: 500px;
+    height: 250px;
+    background: #551073;
+    border-radius: 50px;
+    padding: 20px;
 }
 
 .numerosSort {
@@ -56,13 +106,32 @@ section #buttonSort {
     margin: auto;
     width: 100px;
     height: 30px;
-    border-radius: 10px;
+    border-radius: 8px;
+    font-weight: bold;
     background: white;
     color: #3F1140;
     border: none;
     cursor: pointer;
+    transition: 0.1s ease-in-out;
 }
 
+section #buttonSort:hover {
+    box-shadow: 1px 1px 5px #FEFEFE;
+}
+
+
 footer {
+    margin: 0;
+    padding: 0;
+    bottom: 0;
+    position: fixed;
+    width: 100%;
     text-align: center;
+    background: #551073;
+}
+
+footer p {
+    padding: 15px;
+    margin: 0;
+    color: white;
 }
