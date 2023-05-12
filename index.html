@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
-    <title>Sorteador SorteTudo</title>
+    <title>sorteTudo</title>
 </head>
 <body>
     <header>
@@ -14,21 +14,44 @@
         <img class="animacaoDado" src="img/dado.png" alt="icon-dado">
     </header>
     <section class="conferirDados">
-        <form action="">
-            
+        <form action="" method="get" class="entradaDados">
+
+            <p>
+                <label for="txtNumQt">Quantos números: </label>
+                <input type="number" name="txtNumQt" id="txtNumQt" required max="10">
+            </p>
+
+            <p>
+                <label for="txtNumIni">De: </label>
+                <input type="number" name="txtNumIni" id="txtNumIni" required min="0">
+            </p>
+
+            <p>
+                <label for="txtNumFim">Ate: </label>
+                <input type="number" name="txtNumFim" id="txtNumFim" required max="10000">
+            </p>
+
+            <input id="buttonSort" type="button" value="SORTEAR" onclick="acionarModal()">
         </form>
     </section>
-    <!--
-    <section class="numerosSort">
-        <div id="resultado"></div>
-        <div class="sort"></div>
-        <div class="sort"></div>
-        <div class="sort"></div>
-        <div class="sort"></div>
-        <div class="sort"></div>
-        <input id="buttonSort" type="button" value="SORTEAR">
-    </section>
-    -->
+    <div id="fade" class="hide"></div>
+    <div id="modal" class="hide">
+        <div class="modal-header">
+            <h1 >Resultado do sorteio: </h1>
+        </div>
+        <div class="modal-section">
+            <section class="numerosSort">
+                <div id="resultado"></div>
+                <div class="sort"></div>
+                <div class="sort"></div>
+                <div class="sort"></div>
+                <div class="sort"></div>
+                <div class="sort"></div>
+            </section>
+        </div>
+        <button id="close-modal">Fechar</button>
+    </div>
+
     <footer>
         <p>&copy; Desenvolvido by Gustavo Vieira</p>
     </footer>
