@@ -6,7 +6,7 @@
 * {
     --roxo_escuro: #3F1140;
     --roxo_claro: #551073;
-    --mostarda: #f2ac29c2;
+    --mostarda: #f2ac29;
     --vermelho_escuro: #731007;
     --vermelho_claro: #D92211;
     --font-padrao: 'Poppins', sans-serif;
@@ -18,7 +18,51 @@ body {
 }
 
 header {
-    color: var(--vermelho_escuro);
+    color: #FEFEFE;
     text-align: center;
 }
 
+.numerosSort {
+    width: auto;
+    height: 400px;
+    margin: 20px;
+    border-radius: 7px;
+    box-shadow: 10px 10px 1px white;
+    text-align: center;
+    font-weight: 20px;
+    background: var(--roxo_claro);
+}
+
+.numerosSort h2 {
+    text-align: left;
+    padding-top: 15px;
+    padding-left: 15px;
+    color: white;
+
+}
+
+.sort {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin: 50px 20px;
+    box-shadow: 4px 1px 5px #3F1140;
+    display: inline-block;
+    background: #FEFEFE;
+}
+
+section #buttonSort {
+    display: block;
+    margin: auto;
+    width: 100px;
+    height: 30px;
+    border-radius: 10px;
+    background: white;
+    color: #3F1140;
+    border: none;
+    cursor: pointer;
+}
+
+footer {
+    text-align: center;
+}
