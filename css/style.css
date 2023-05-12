@@ -1,0 +1,24 @@
+@charset "UTF-8";
+    /* Importação de fontes */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap');
+
+    /* Definição de variaveis globais */
+* {
+    --roxo_escuro: #3F1140;
+    --roxo_claro: #551073;
+    --mostarda: #f2ac29c2;
+    --vermelho_escuro: #731007;
+    --vermelho_claro: #D92211;
+    --font-padrao: 'Poppins', sans-serif;
+}
+
+body {
+    background: var(--mostarda);
+    font-family: var(--font-padrao);
+}
+
+header {
+    color: var(--vermelho_escuro);
+    text-align: center;
+}
+
