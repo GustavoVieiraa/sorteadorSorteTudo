@@ -70,6 +70,7 @@ header img {
     background: #551073;
     border-radius: 50px;
     padding: 20px;
+    z-index: 90;
 }
 
 .entradaDados {
@@ -125,7 +126,7 @@ header img {
     background: #FEFEFE;
 }
 
-section #buttonSort {
+section #open-modal {
     display: block;
     margin: auto;
     width: 100px;
@@ -136,44 +137,12 @@ section #buttonSort {
     color: #3F1140;
     border: none;
     cursor: pointer;
-    transition: 0.1s ease-in-out;
+    transition: .1s ease-in-out;
 }
 
-section #buttonSort:hover {
+section #open-modal:hover {
     box-shadow: 1px 1px 5px #FEFEFE;
 }
-
-
-.modal-header h1 {
-    color: #FEFEFE;
-}
-
-#fade {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
-    z-index: 5;
-}
-
-#modal {
-    width: 90%;
-    max-width: 90%;
-    height: 90%;
-    position: fixed;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 10;
-}
-
-#modal.hide,
-#fade.hide {
-    opacity: 0;
-}
-
 
 footer {
     margin: 0;
