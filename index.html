@@ -17,23 +17,33 @@
         <form action="" method="get" class="entradaDados">
 
             <p>
-                <label for="txtNumQt">Quantos números: </label>
-                <input type="number" name="txtNumQt" id="txtNumQt" required max="10">
+                <label for="txtNumQt"> Sortear </label> 
+                <input type="number" name="txtNumQt" id="txtNumQt" required max="10" value="1">
             </p>
 
             <p>
                 <label for="txtNumIni">De: </label>
-                <input type="number" name="txtNumIni" id="txtNumIni" required min="0">
+                <input type="number" name="txtNumIni" id="txtNumIni" required min="0" value="1">
             </p>
 
             <p>
                 <label for="txtNumFim">Ate: </label>
-                <input type="number" name="txtNumFim" id="txtNumFim" required max="10000">
+                <input type="number" name="txtNumFim" id="txtNumFim" required max="10000" value="100">
             </p>
 
-            <input id="open-modal" type="button" value="SORTEAR" onclick="modalResultado()">
+            <input id="abrir-modal" type="button" value="SORTEAR" onclick="modalResultado()">
         </form>
     </section>
+    <div class="janela-modal" id="janela-modal">
+        <div class="modal">
+            <header>
+                <h1 class="sorteadoNum"></h1>
+            </header>
+            <button class="btn-fechar" id="btn-fechar">X</button>
+            <input type="button" value="Sortear de novo" id="btn-novoSorteio" class="btn-novoSorteio" onclick="modalResultado()">
+            <div class="resultadoModal"></div>
+        </div>
+    </div>
 
     <footer>
         <p>&copy; Desenvolvido by Gustavo Vieira</p>

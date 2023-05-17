@@ -1,10 +1,44 @@
+/* Variaveis Globais */
+let valoresResultado = geradorRandomico();
+
+/* *Validações do sistema */
 function modalResultado() {
+    resultadosDiv();
+    abrirModal();
+}
+
+function resultadosDiv() {
+    let exDados = document.querySelector('.resultadoModal');
     let qtsNum = validacaoQtsNum();
     let numIni = validacaoNumIni();
     let numFim = validacaoNumFim();
-    let dadosFinais = []
-    dadosFinais = geradorRandomico(qtsNum, numIni, numFim);
-    alert(dadosFinais);
+    /* Alteração de dados para apresentação */
+    if (valoresResultado.length == 0) {
+        if (qtsNum == 1) {
+            let sorteado = document.querySelector('.sorteadoNum');
+            sorteado.innerHTML = `O número sorteado foi: `;
+        } else {
+            let sorteado = document.querySelector('.sorteadoNum');
+            sorteado.innerHTML = 'Os números sorteados foram: ';
+        }
+        valoresResultado = geradorRandomico(qtsNum, numIni, numFim);
+        for (let nav=0;nav<qtsNum;nav++) {
+            exDados.innerHTML += `<p class="balls"> ${valoresResultado[nav]} </p>`;
+        }
+    } else {
+        exDados.innerHTML = ``;
+        if (qtsNum == 1) {
+            let sorteado = document.querySelector('.sorteadoNum');
+            sorteado.innerHTML = `O número sorteado foi: `;
+        } else {
+            let sorteado = document.querySelector('.sorteadoNum');
+            sorteado.innerHTML = 'Os números sorteados foram: ';
+        }
+        valoresResultado = geradorRandomico(qtsNum, numIni, numFim);
+        for (let nav=0;nav<qtsNum;nav++) {
+            exDados.innerHTML += `<p class="balls"> ${valoresResultado[nav]} </p>`;
+        }
+    }
 }
 
 function validacaoQtsNum() {
@@ -61,17 +95,24 @@ function validacaoNumFim() {
     }
 }
 
-function geradorRandomico(qtsNum, numIni, numFim) {
+function geradorRandomico(qtsNum, numIni, numFim) { 
     let numSorteados = []
     for (let nav=1;nav<=qtsNum;nav++) {
-        let numGerado = Math.floor(Math.random() * numFim);
-        if (numGerado > numIni) {
-            numSorteados.push(numGerado);
-            alert(numGerado);
-        } else {
-            nav--;
-        }
+        let numGerado = Math.floor(Math.random() * (numFim - numIni + 1) + numIni);
+        numSorteados.push(numGerado);
     }
     return numSorteados;
+}
+
+/* *Abrir e Fechar MODAL */
+function abrirModal() {
+    const modal = document.getElementById('janela-modal');
+    modal.classList.add('abrir');
+
+    modal.addEventListener('click', (e) => {
+        if(e.target.id == 'btn-fechar' || e.target.id == 'janela.modal') {
+            modal.classList.remove('abrir');
+        }
+    })
 }
 
