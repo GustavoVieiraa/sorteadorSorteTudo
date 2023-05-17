@@ -93,7 +93,7 @@ function validacaoNumFim() {
         return "InicialMaior";
     } else if (numFim > 9999) {
         return "Numero max: 9999 ";
-    } else if (numFim < 0) {
+    } else if (numFim <= 0) {
         return "CAMPO: Ate: ";
     } else {
         return [numFim, true];
@@ -131,7 +131,7 @@ function modalError() {
     let errorF = validacaoNumFim();
     if (errorQ == "CAMPO: SORTEAR") {
         let error = document.getElementById("apresentar-error");
-        error.innerHTML = `${errorQ}`;      
+        error.innerHTML = `${errorQ} - Máx 10 Números`;      
     } else if (errorI == "CAMPO: De:") {
         let error = document.getElementById("apresentar-error");
         error.innerHTML = `${errorI}`;
@@ -144,7 +144,7 @@ function modalError() {
     } else if (errorF == "InicialMaior") {
         let error = document.getElementById("apresentar-error");
         error.innerHTML = `Número inicial não pode ser maior que o número final.`;
-    }
+    } 
     popup.classList.add("open-popup");
 }
 
