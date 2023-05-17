@@ -168,6 +168,7 @@ section #abrir-modal:hover {
 
 .modal {
     background: #f2ac29;
+    box-shadow: 15px 15px 2px white;
     backdrop-filter: blur(10px);
     width: 80%;
     min-width: 450px;
@@ -244,6 +245,10 @@ section #abrir-modal:hover {
     display: flex;
 }
 
+.sorteadoNum span {
+    color: #551073;
+}
+
 .balls {
     margin: 20px;
     background: #FEFEFE;
@@ -264,6 +269,57 @@ section #abrir-modal:hover {
     background: #d6d6d6 ;
 }
 
+/* Design do Pop-error */
+.popup {
+    width: 400px;
+    background: #FEFEFE;
+    border-radius: 6px;
+    position: absolute;
+    top: 0%;
+    left: 50%;
+    transform: translate(-50%, -70%) scale(0.1);
+    text-align: center;
+    padding: 0 30px 30px ;
+    visibility: hidden;
+    transition: transform .4s, top .4s;
+}
+
+.open-popup {
+    visibility: visible;
+    top: 50%;
+    transform: translate(-50%, -70%) scale(1);
+}
+
+.popup img {
+    width: 80px;
+    margin-top: 50px;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.popup h2 {
+    font-size: 24px;
+    font-weight: 500;
+    margin: 30px 0 10px;
+}
+
+.popup button {
+    width: 100%;
+    margin-top: 20px;
+    padding: 10px 0;
+    background: #D92211;
+    color: #FFF;
+    border: 0;
+    outline: none;
+    font-size: 18px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: ease-in-out all .2s;
+}
+
+.popup button:hover {
+    background: #731007;
+}
 
 /* Design do Footer*/
 

@@ -4,7 +4,14 @@ let valoresResultado = geradorRandomico();
 /* *Validações do sistema */
 function modalResultado() {
     resultadosDiv();
-    abrirModal();
+    let valNumQ = (validacaoQtsNum())
+    let valNumI = (validacaoNumIni())
+    let valNumF = (validacaoNumFim()) 
+    if (valNumF[1] == true && valNumQ[1] == true && valNumI[1] == true) {
+        abrirModal();
+    } else {
+        
+    }
 }
 
 function resultadosDiv() {
@@ -21,21 +28,21 @@ function resultadosDiv() {
             let sorteado = document.querySelector('.sorteadoNum');
             sorteado.innerHTML = 'Os números sorteados foram: ';
         }
-        valoresResultado = geradorRandomico(qtsNum, numIni, numFim);
-        for (let nav=0;nav<qtsNum;nav++) {
+        valoresResultado = geradorRandomico(qtsNum[0], numIni[0], numFim[0]);
+        for (let nav=0;nav<qtsNum[0];nav++) {
             exDados.innerHTML += `<p class="balls"> ${valoresResultado[nav]} </p>`;
         }
     } else {
         exDados.innerHTML = ``;
-        if (qtsNum == 1) {
+        if (qtsNum[0] == 1) {
             let sorteado = document.querySelector('.sorteadoNum');
             sorteado.innerHTML = `O número sorteado foi: `;
         } else {
             let sorteado = document.querySelector('.sorteadoNum');
             sorteado.innerHTML = 'Os números sorteados foram: ';
         }
-        valoresResultado = geradorRandomico(qtsNum, numIni, numFim);
-        for (let nav=0;nav<qtsNum;nav++) {
+        valoresResultado = geradorRandomico(qtsNum[0], numIni[0], numFim[0]);
+        for (let nav=0;nav<qtsNum[0];nav++) {
             exDados.innerHTML += `<p class="balls"> ${valoresResultado[nav]} </p>`;
         }
     }
@@ -46,14 +53,14 @@ function validacaoQtsNum() {
     let txtQtsNum = document.querySelector("#txtNumQt");
     let qtsNum = Number(txtQtsNum.value);
     if (qtsNum == 0) {
-        alert("Informe um valor! [Quantos números]");
+        modalError()
     } else {
         if (qtsNum > 10) {
-            alert("É possível sortear no máximo 10 números!");
+            modalError()
         } else if (qtsNum < 0) {
-            alert("Esse número é invalido!");
+            modalError()
         } else {
-            return qtsNum;
+            return [qtsNum, true];
         }
     }
 }
@@ -64,12 +71,12 @@ function validacaoNumIni() {
     let txtNumIni = document.querySelector("#txtNumIni");
     let numIni = Number(txtNumIni.value);
     if (numIni == 0) {
-        alert("Informe um valor! [DE]");
+        modalError()
     } else {
         if (numIni < 0 || numIni > 9999) {
-            alert("O número informado para iniciar é invalido!");
+            modalError()
         } else {
-            return numIni;
+            return [numIni, true];
         }
     }
 }
@@ -81,27 +88,50 @@ function validacaoNumFim() {
     let txtNumFim = document.querySelector("#txtNumFim");
     let numFim = Number(txtNumFim.value);
     if (numFim == 0) {
-        alert("Informe um valor! [FIM]");
+        modalError()
     } else {
-        if (numFim > nIni) {
-            if (numFim > 9999) {
-                alert("O número final informado é invalido!");
-            } else if (nIni > numFim) {
-                alert("O número final tem que ser maior que o número inicial!");
-            } else {
-                return numFim;
-            }
+        if (nIni > numFim) {
+            modalError();
+        } else if (numFim > 9999) {
+            modalError();
+        } else if (numFim < 0) {
+            modalError()
+        } else {
+            return [numFim, true];
         }
     }
 }
 
 function geradorRandomico(qtsNum, numIni, numFim) { 
     let numSorteados = []
-    for (let nav=1;nav<=qtsNum;nav++) {
+    let c = 0;
+    // Validação para Não gerar Números Iguais!
+    while (c < qtsNum) {
         let numGerado = Math.floor(Math.random() * (numFim - numIni + 1) + numIni);
-        numSorteados.push(numGerado);
+        if (numSorteados.length == 0) {
+            numSorteados.push(numGerado);
+            c++;
+        } else {
+            if (numSorteados.includes(numGerado) == true) {
+                console.log('Proximo');
+            } else {
+                numSorteados.push(numGerado);
+                c++;
+            }
+        }
     }
     return numSorteados;
+}
+
+/* Function para abrir popUp de error e fechar */
+let popup = document.getElementById("popup");
+
+function modalError() {
+    popup.classList.add("open-popup");
+}
+
+function closePopup() {
+    popup.classList.remove("open-popup");
 }
 
 /* *Abrir e Fechar MODAL */

@@ -40,11 +40,17 @@
                 <h1 class="sorteadoNum"></h1>
             </header>
             <button class="btn-fechar" id="btn-fechar">X</button>
-            <input type="button" value="Sortear de novo" id="btn-novoSorteio" class="btn-novoSorteio" onclick="modalResultado()">
+            <input type="button" value="Sortear de novo" id="btn-novoSorteio" class="btn-novoSorteio" onclick="modalResultado()" onclick="modalError()">
             <div class="resultadoModal"></div>
         </div>
     </div>
 
+    <div class="popup" id="popup">
+        <img src="https://cdn.pixabay.com/photo/2017/02/12/21/29/false-2061132_1280.png" alt="teste">
+        <h2>Confira os dados</h2>
+        <p>Os dados informados para o sorteio, não estão corretos!</p>
+        <button type="button" onclick="closePopup()">OK</button>
+    </div>
     <footer>
         <p>&copy; Desenvolvido by Gustavo Vieira</p>
     </footer>
