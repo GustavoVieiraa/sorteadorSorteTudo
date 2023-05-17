@@ -6,11 +6,11 @@ function modalResultado() {
     resultadosDiv();
     let valNumQ = (validacaoQtsNum())
     let valNumI = (validacaoNumIni())
-    let valNumF = (validacaoNumFim()) 
+    let valNumF = (validacaoNumFim())
     if (valNumF[1] == true && valNumQ[1] == true && valNumI[1] == true) {
         abrirModal();
     } else {
-        
+        modalError();
     }
 }
 
@@ -21,7 +21,7 @@ function resultadosDiv() {
     let numFim = validacaoNumFim();
     /* Alteração de dados para apresentação */
     if (valoresResultado.length == 0) {
-        if (qtsNum == 1) {
+        if (qtsNum[0] == 1) {
             let sorteado = document.querySelector('.sorteadoNum');
             sorteado.innerHTML = `O número sorteado foi: `;
         } else {
@@ -53,12 +53,13 @@ function validacaoQtsNum() {
     let txtQtsNum = document.querySelector("#txtNumQt");
     let qtsNum = Number(txtQtsNum.value);
     if (qtsNum == 0) {
-        modalError()
+        return "CAMPO: SORTEAR";
     } else {
         if (qtsNum > 10) {
-            modalError()
+            return "CAMPO: SORTEAR";
+
         } else if (qtsNum < 0) {
-            modalError()
+            return "CAMPO: SORTEAR";
         } else {
             return [qtsNum, true];
         }
@@ -71,10 +72,10 @@ function validacaoNumIni() {
     let txtNumIni = document.querySelector("#txtNumIni");
     let numIni = Number(txtNumIni.value);
     if (numIni == 0) {
-        modalError()
+        return "CAMPO: De:"
     } else {
         if (numIni < 0 || numIni > 9999) {
-            modalError()
+            return "CAMPO: De:"
         } else {
             return [numIni, true];
         }
@@ -85,22 +86,20 @@ function validacaoNumFim() {
     /* Validação se o Range de entrada de dados do FIM 
     está entre 1 e 9999 */
     let nIni = validacaoNumIni();
+    nIni = nIni[0];
     let txtNumFim = document.querySelector("#txtNumFim");
     let numFim = Number(txtNumFim.value);
-    if (numFim == 0) {
-        modalError()
+    if (nIni >= numFim) {
+        return "InicialMaior";
+    } else if (numFim > 9999) {
+        return "Numero max: 9999 ";
+    } else if (numFim < 0) {
+        return "CAMPO: Ate: ";
     } else {
-        if (nIni > numFim) {
-            modalError();
-        } else if (numFim > 9999) {
-            modalError();
-        } else if (numFim < 0) {
-            modalError()
-        } else {
-            return [numFim, true];
-        }
+        return [numFim, true];
     }
 }
+
 
 function geradorRandomico(qtsNum, numIni, numFim) { 
     let numSorteados = []
@@ -127,6 +126,25 @@ function geradorRandomico(qtsNum, numIni, numFim) {
 let popup = document.getElementById("popup");
 
 function modalError() {
+    let errorQ = validacaoQtsNum();
+    let errorI = validacaoNumIni();
+    let errorF = validacaoNumFim();
+    if (errorQ == "CAMPO: SORTEAR") {
+        let error = document.getElementById("apresentar-error");
+        error.innerHTML = `${errorQ}`;      
+    } else if (errorI == "CAMPO: De:") {
+        let error = document.getElementById("apresentar-error");
+        error.innerHTML = `${errorI}`;
+    } else if (errorF == "CAMPO: Ate: ") {
+        let error = document.getElementById("apresentar-error");
+        error.innerHTML = `${errorF}`;
+    } else if (errorF == "Numero max: 9999 ") {
+        let error = document.getElementById("apresentar-error");
+        error.innerHTML = `${errorF}`;
+    } else if (errorF == "InicialMaior") {
+        let error = document.getElementById("apresentar-error");
+        error.innerHTML = `Número inicial não pode ser maior que o número final.`;
+    }
     popup.classList.add("open-popup");
 }
 

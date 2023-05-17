@@ -66,10 +66,9 @@ header img {
 .conferirDados {
     margin: 100px auto;
     width: 500px;
-    height: 250px;
+    height: 350px;
     background: #551073;
     border-radius: 50px;
-    padding: 20px;
 }
 
 .conferirDados p {
@@ -78,10 +77,15 @@ header img {
 }
 
 .entradaDados {
-    margin: 15px;
+    display: inline-block;
+    text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+.entradaDados label {
+    display: block;
 }
 
 .entradaDados input {
@@ -99,6 +103,8 @@ header img {
 .entradaDados label {
     color: #FEFEFE;
 }
+
+
 
 /* Personalização da Modal */
 
@@ -134,11 +140,12 @@ header img {
 section #abrir-modal {
     display: block;
     margin: auto;
+    margin-top: 10px;
     width: 100px;
     height: 30px;
     border-radius: 8px;
     font-weight: 600;
-    font-size: 1rem;
+    font-size: .9rem;
     background: white;
     color: #3F1140;
     border: none;
